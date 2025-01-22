@@ -1,4 +1,6 @@
 // components/layout/Header.js
+'use client';
+
 import { Mail, Phone } from 'lucide-react';
 import Image from 'next/image';
 
