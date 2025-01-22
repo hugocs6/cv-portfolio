@@ -14,20 +14,24 @@ const CVLandingPage = () => {
   const [darkMode, setDarkMode] = useState(false);
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'bg-gray-900' : 'bg-slate-50'} flex flex-col`}>
+    <div className={`min-h-screen flex flex-col transition-colors duration-300 ${darkMode ? 'bg-gray-900' : 'bg-slate-50'}`}>
       <ThemeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
       <Header darkMode={darkMode} />
       
-      <main className="max-w-6xl mx-auto p-8 -mt-8 flex-grow">
-        <Navbar 
-          activeTab={activeTab} 
-          setActiveTab={setActiveTab}
-          darkMode={darkMode} 
-        />
+      <main className="flex-grow px-4 sm:px-8">
+        <div className="max-w-4xl mx-auto">
+          <Navbar 
+            activeTab={activeTab} 
+            setActiveTab={setActiveTab}
+            darkMode={darkMode} 
+          />
 
-        <Experience isVisible={activeTab === 'experience'} darkMode={darkMode} />
-        <Skills isVisible={activeTab === 'competences'} darkMode={darkMode} />
-        <Education isVisible={activeTab === 'formation'} darkMode={darkMode} />
+          <div className="w-full">
+            <Experience isVisible={activeTab === 'experience'} darkMode={darkMode} />
+            <Skills isVisible={activeTab === 'competences'} darkMode={darkMode} />
+            <Education isVisible={activeTab === 'formation'} darkMode={darkMode} />
+          </div>
+        </div>
       </main>
 
       <Footer darkMode={darkMode} />
