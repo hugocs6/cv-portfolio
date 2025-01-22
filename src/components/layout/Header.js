@@ -30,8 +30,7 @@ const Header = ({ darkMode }) => {
               </h1>
               <p className="text-xl sm:text-2xl text-blue-300">Étudiant en Cybersécurité</p>
               <p className="text-base sm:text-lg text-gray-300">
-                Étudiant passionné en cybersécurité à l&apos;Efrei, à la recherche d&apos;une alternance pour ma troisième année.
-                Certifié Fortinet NSE1-3, avec une solide base en développement et sécurité informatique.
+                Étudiant passionné en cybersécurité à l&apos;Efrei, à la recherche d&apos;une alternance ou d'un stage pour ma troisième année.
               </p>
             </div>
 
@@ -65,7 +64,7 @@ const Header = ({ darkMode }) => {
           </div>
           <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl hover:bg-white/20 transition-colors">
             <h3 className="text-xl font-semibold">Recherche</h3>
-            <p className="text-gray-300">Stage ou Alternance en Cybersécurité</p>
+            <p className="text-gray-300">Stage ou Alternance</p>
           </div>
           <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl hover:bg-white/20 transition-colors">
             <h3 className="text-xl font-semibold">Localisation</h3>

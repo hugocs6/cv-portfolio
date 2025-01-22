@@ -50,7 +50,7 @@ const Skills = ({ isVisible, darkMode }) => {
 
   const languages = [
     { language: "Français", level: "Natif" },
-    { language: "Anglais", level: "Professionnel" }
+    { language: "Anglais", level: "B2" }
   ];
 
   if (!isVisible) return null;

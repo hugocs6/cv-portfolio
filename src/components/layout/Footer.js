@@ -42,7 +42,7 @@ const Footer = ({ darkMode }) => {
             </h3>
             <div className="space-y-2">
               <a 
-                href="https://github.com/hugocnr" 
+                href="https://github.com/hugocs6" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-blue-500 transition-colors"
@@ -51,7 +51,7 @@ const Footer = ({ darkMode }) => {
                 GitHub
               </a>
               <a 
-                href="https://www.linkedin.com/in/hugo-cannier" 
+                href="https://www.linkedin.com/in/hugo-cannier-8721562b8/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-blue-500 transition-colors"
