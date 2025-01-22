@@ -30,7 +30,7 @@ const Header = ({ darkMode }) => {
               </h1>
               <p className="text-xl sm:text-2xl text-blue-300">Étudiant en Cybersécurité</p>
               <p className="text-base sm:text-lg text-gray-300">
-                Étudiant passionné en cybersécurité à l&apos;Efrei, à la recherche d&apos;une alternance ou d'un stage pour ma troisième année.
+                Étudiant passionné en cybersécurité à l'Efrei, à la recherche d'une alternance ou d'un stage pour ma troisième année.
               </p>
             </div>
 
