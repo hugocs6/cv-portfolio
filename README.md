@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CV Portfolio en ligne
 
-## Getting Started
+Un portfolio moderne et réactif construit avec Next.js, présentant mes compétences en cybersécurité et développement web.
 
-First, run the development server:
+## 🌐 [Voir le site en ligne](https://cv-portfolio-gamma.vercel.app/)
+
+## 🛠 Technologies Utilisées
+
+- **Framework**: Next.js 14
+- **Styling**: TailwindCSS
+- **Icônes**: Lucide React
+- **Déploiement**: Vercel
+
+## ✨ Fonctionnalités
+
+- Design responsive pour tous les appareils
+- Mode sombre/clair
+- Animations fluides
+- Navigation par onglets
+- Interface utilisateur moderne
+- Optimisation des images avec Next.js
+- Performance optimisée
+
+## 🚀 Installation Locale
 
 ```bash
+# Cloner le repository
+git clone https://github.com/hugocs6/cv-portfolio
+
+# Accéder au répertoire
+cd cv-portfolio
+
+# Installer les dépendances
+npm install
+
+# Lancer le serveur de développement
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Le site sera accessible à l'adresse [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Structure du Projet
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+cv-portfolio/
+├── src/
+│   ├── app/
+│   │   ├── page.js
+│   │   └── layout.js
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── Header.js
+│   │   │   ├── Footer.js
+│   │   │   └── Navbar.js
+│   │   ├── sections/
+│   │   │   ├── Experience.js
+│   │   │   ├── Skills.js
+│   │   │   └── Education.js
+│   │   └── ui/
+│   │       ├── ThemeToggle.js
+│   │       └── InfoCard.js
+│   └── styles/
+│       └── globals.css
+└── public/
+    └── images/
+        └── profile.jpg
+```
 
-## Learn More
+## 🔄 Mise à Jour du Contenu
 
-To learn more about Next.js, take a look at the following resources:
+Pour mettre à jour le contenu du CV, modifiez les fichiers correspondants dans le dossier `components/sections/`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📱 Responsive Design
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Le site est optimisé pour :
+- Mobile (< 640px)
+- Tablette (640px - 1024px)
+- Desktop (> 1024px)
 
-## Deploy on Vercel
+## 🌙 Mode Sombre
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Le site inclut un thème sombre qui peut être activé via le bouton en haut à droite.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Déploiement
+
+Le site est automatiquement déployé sur Vercel à chaque push sur la branche main.
+
+## 👤 Auteur
+
+- Hugo Cannier
+- Portfolio: [cv-portfolio-gamma.vercel.app](https://cv-portfolio-gamma.vercel.app/)
+- GitHub: [@hugocs6](https://github.com/hugocs6)
+
+## 📄 Licence
+
+Ce projet est sous licence MIT.
