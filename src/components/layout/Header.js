@@ -1,6 +1,6 @@
-'use client';
-
+// components/layout/Header.js
 import { Mail, Phone } from 'lucide-react';
+import Image from 'next/image';
 
 const Header = ({ darkMode }) => {
   return (
@@ -9,9 +9,11 @@ const Header = ({ darkMode }) => {
         <div className="flex flex-col md:flex-row items-center gap-12">
           <div className="relative w-48 h-48 group">
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#7dd3c7] to-[#86cdea] group-hover:scale-105 transition-transform duration-300" />
-            <img
+            <Image
               src="/images/profile.jpg"
               alt="Hugo Cannier"
+              width={192}
+              height={192}
               className="relative rounded-full w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
           </div>
