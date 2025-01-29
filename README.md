@@ -7,8 +7,11 @@ Un portfolio moderne et réactif construit avec Next.js, présentant mes compét
 ## 🛠 Technologies Utilisées
 
 - **Framework**: Next.js 14
+
 - **Styling**: TailwindCSS
+
 - **Icônes**: Lucide React
+
 - **Déploiement**: Vercel
 
 ## ✨ Fonctionnalités
