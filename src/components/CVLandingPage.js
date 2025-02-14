@@ -7,6 +7,8 @@ import Navbar from '@/components/layout/Navbar';
 import Experience from '@/components/sections/Experience';
 import Skills from '@/components/sections/Skills';
 import Education from '@/components/sections/Education';
+import Projects from '@/components/sections/Projects';
+import Contact from '@/components/sections/Contact';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 
 const CVLandingPage = () => {
@@ -30,6 +32,8 @@ const CVLandingPage = () => {
             <Experience isVisible={activeTab === 'experience'} darkMode={darkMode} />
             <Skills isVisible={activeTab === 'competences'} darkMode={darkMode} />
             <Education isVisible={activeTab === 'formation'} darkMode={darkMode} />
+            <Projects isVisible={activeTab === 'projets'} darkMode={darkMode} />
+            <Contact isVisible={activeTab === 'contact'} darkMode={darkMode} />
           </div>
         </div>
       </main>

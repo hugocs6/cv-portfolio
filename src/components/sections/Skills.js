@@ -1,9 +1,14 @@
-// components/sections/Skills.js
+'use client';
+
+import { Code, Server, Award, Brain, Globe } from 'lucide-react';
 import SkillBadge from '@/components/ui/SkillBadge';
 
-const SkillSection = ({ title, skills, type, darkMode }) => (
-  <div>
-    <h4 className={`font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-2`}>{title}</h4>
+const SkillSection = ({ title, skills, type, darkMode, icon: Icon }) => (
+  <div className="animate-fade-in">
+    <div className="flex items-center gap-2 mb-4">
+      <Icon className={`w-5 h-5 ${darkMode ? 'text-blue-400' : 'text-blue-500'}`} />
+      <h4 className={`font-semibold ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>{title}</h4>
+    </div>
     <div className="flex flex-wrap gap-2">
       {skills.map(skill => (
         <SkillBadge key={skill} skill={skill} type={type} darkMode={darkMode} />
@@ -13,38 +18,82 @@ const SkillSection = ({ title, skills, type, darkMode }) => (
 );
 
 const SoftSkillCard = ({ title, description, darkMode }) => (
-  <div className={`p-4 ${darkMode ? 'bg-gray-700' : 'bg-gray-50'} rounded-lg`}>
-    <h4 className={`font-medium ${darkMode ? 'text-white' : 'text-gray-700'}`}>{title}</h4>
-    <p className={`mt-1 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>{description}</p>
+  <div className={`
+    p-5 rounded-xl transition-all duration-300
+    ${darkMode ? 'bg-gray-800 hover:bg-gray-750' : 'bg-white hover:bg-gray-50'}
+    transform hover:-translate-y-1 hover:shadow-lg
+  `}>
+    <h4 className={`font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>{title}</h4>
+    <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>{description}</p>
   </div>
 );
 
 const LanguageItem = ({ language, level, darkMode }) => (
-  <div className="flex justify-between items-center">
-    <span className={darkMode ? 'text-gray-300' : 'text-gray-700'}>{language}</span>
-    <span className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{level}</span>
+  <div className={`
+    flex justify-between items-center p-3 rounded-lg
+    ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}
+    hover:shadow-md transition-all duration-300
+  `}>
+    <span className={`font-medium ${darkMode ? 'text-white' : 'text-gray-800'}`}>{language}</span>
+    <span className={`px-3 py-1 rounded-full text-sm
+      ${darkMode ? 'bg-blue-500/20 text-blue-300' : 'bg-blue-100 text-blue-800'}
+    `}>
+      {level}
+    </span>
   </div>
 );
 
 const Skills = ({ isVisible, darkMode }) => {
   const technicalSkills = {
-    programming: ['Python', 'JavaScript', 'Java', 'C++', 'PHP', 'HTML/CSS', 'SQL', 'Bash'],
-    virtualization: ['VMware', 'VirtualBox', 'Proxmox', 'Docker'],
-    certifications: ['Fortinet NSE1', 'NSE2', 'NSE3']
+    programming: [
+      'Python',
+      'JavaScript',
+      'TypeScript',
+      'Java',
+      'C++',
+      'PHP',
+      'HTML/CSS',
+      'SQL',
+      'Bash'
+    ],
+    security: [
+      'Pentesting',
+      'Network Security',
+      'Cryptography',
+      'Security Auditing',
+      'Vulnerability Assessment'
+    ],
+    infrastructure: [
+      'VMware',
+      'VirtualBox',
+      'Proxmox',
+      'Docker',
+      'Linux',
+      'Windows Server'
+    ],
+    certifications: [
+      'Fortinet NSE1',
+      'NSE2',
+      'NSE3'
+    ]
   };
 
   const softSkills = [
     {
+      title: "Résolution de problèmes",
+      description: "Capacité à analyser les problèmes complexes et à trouver des solutions efficaces"
+    },
+    {
       title: "Adaptabilité",
-      description: "Capacité à s'adapter rapidement aux nouvelles technologies"
+      description: "Flexibilité face aux nouvelles technologies et méthodologies"
     },
     {
-      title: "Capacité d'analyse",
-      description: "Approche méthodique des problèmes"
+      title: "Travail d'équipe",
+      description: "Excellente communication et collaboration au sein d'équipes multidisciplinaires"
     },
     {
-      title: "Leadership",
-      description: "Expérience en gestion d'équipe"
+      title: "Autonomie",
+      description: "Capacité à gérer des projets de manière indépendante et à prendre des initiatives"
     }
   ];
 
@@ -56,66 +105,88 @@ const Skills = ({ isVisible, darkMode }) => {
   if (!isVisible) return null;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="space-y-8 animate-fade-in">
       {/* Technical Skills */}
-      <div className={`${darkMode ? 'bg-gray-800' : 'bg-white'} rounded-xl shadow-sm p-6 transition-colors duration-300`}>
-        <h3 className={`text-xl font-semibold ${darkMode ? 'text-white' : 'text-gray-800'} mb-4`}>
-          Compétences Techniques
-        </h3>
-        <div className="space-y-4">
-          <SkillSection
-            title="Langages de Programmation"
-            skills={technicalSkills.programming}
-            type="default"
-            darkMode={darkMode}
-          />
-          <SkillSection
-            title="Virtualisation & Conteneurs"
-            skills={technicalSkills.virtualization}
-            type="tech"
-            darkMode={darkMode}
-          />
-          <SkillSection
-            title="Certifications"
-            skills={technicalSkills.certifications}
-            type="cert"
-            darkMode={darkMode}
-          />
+      <div className={`
+        rounded-xl shadow-lg p-6
+        ${darkMode ? 'bg-gray-800/50 backdrop-blur' : 'bg-white'}
+      `}>
+        <h3 className="section-header mb-6">Compétences Techniques</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-8">
+            <SkillSection
+              title="Langages de Programmation"
+              skills={technicalSkills.programming}
+              type="code"
+              darkMode={darkMode}
+              icon={Code}
+            />
+            <SkillSection
+              title="Sécurité"
+              skills={technicalSkills.security}
+              type="security"
+              darkMode={darkMode}
+              icon={Server}
+            />
+          </div>
+          <div className="space-y-8">
+            <SkillSection
+              title="Infrastructure"
+              skills={technicalSkills.infrastructure}
+              type="infra"
+              darkMode={darkMode}
+              icon={Server}
+            />
+            <SkillSection
+              title="Certifications"
+              skills={technicalSkills.certifications}
+              type="cert"
+              darkMode={darkMode}
+              icon={Award}
+            />
+          </div>
         </div>
       </div>
 
-      {/* Soft Skills and Languages */}
-      <div className="space-y-6">
-        <div className={`${darkMode ? 'bg-gray-800' : 'bg-white'} rounded-xl shadow-sm p-6 transition-colors duration-300`}>
-          <h3 className={`text-xl font-semibold ${darkMode ? 'text-white' : 'text-gray-800'} mb-4`}>
-            Soft Skills
-          </h3>
-          <div className="grid grid-cols-1 gap-4">
-            {softSkills.map((skill, index) => (
-              <SoftSkillCard
-                key={index}
-                title={skill.title}
-                description={skill.description}
-                darkMode={darkMode}
-              />
-            ))}
-          </div>
+      {/* Soft Skills */}
+      <div className={`
+        rounded-xl shadow-lg p-6
+        ${darkMode ? 'bg-gray-800/50 backdrop-blur' : 'bg-white'}
+      `}>
+        <div className="flex items-center gap-2 mb-6">
+          <Brain className={darkMode ? 'text-blue-400' : 'text-blue-500'} />
+          <h3 className="section-header mb-0">Soft Skills</h3>
         </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {softSkills.map((skill, index) => (
+            <SoftSkillCard
+              key={index}
+              title={skill.title}
+              description={skill.description}
+              darkMode={darkMode}
+            />
+          ))}
+        </div>
+      </div>
 
-        <div className={`${darkMode ? 'bg-gray-800' : 'bg-white'} rounded-xl shadow-sm p-6 transition-colors duration-300`}>
-          <h3 className={`text-xl font-semibold ${darkMode ? 'text-white' : 'text-gray-800'} mb-4`}>
-            Langues
-          </h3>
-          <div className="space-y-4">
-            {languages.map((lang, index) => (
-              <LanguageItem
-                key={index}
-                language={lang.language}
-                level={lang.level}
-                darkMode={darkMode}
-              />
-            ))}
-          </div>
+      {/* Languages */}
+      <div className={`
+        rounded-xl shadow-lg p-6
+        ${darkMode ? 'bg-gray-800/50 backdrop-blur' : 'bg-white'}
+      `}>
+        <div className="flex items-center gap-2 mb-6">
+          <Globe className={darkMode ? 'text-blue-400' : 'text-blue-500'} />
+          <h3 className="section-header mb-0">Langues</h3>
+        </div>
+        <div className="space-y-3">
+          {languages.map((lang, index) => (
+            <LanguageItem
+              key={index}
+              language={lang.language}
+              level={lang.level}
+              darkMode={darkMode}
+            />
+          ))}
         </div>
       </div>
     </div>

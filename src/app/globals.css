@@ -3,7 +3,25 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Animations */
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Modern Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -15,95 +33,147 @@
   }
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.5s ease forwards;
+@keyframes slideIn {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-/* Pour les cartes de compétences */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+/* Modern Card Styles */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Skill Cards */
 .skill-card {
-  transition: all 0.3s ease;
+  @apply p-4 rounded-xl transition-all duration-300;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .skill-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
 }
 
-/* Pour les badges de compétences */
-.skill-badge {
-  transition: all 0.2s ease;
+/* Timeline Styles */
+.timeline-container {
+  @apply relative pl-8;
 }
 
-.skill-badge:hover {
-  transform: scale(1.05);
+.timeline-line {
+  @apply absolute left-0 top-0 w-0.5 h-full bg-gradient-to-b from-blue-400 to-blue-600;
 }
 
-/* Effet de pulse pour les liens importants */
-.pulse-on-hover:hover {
-  animation: pulse 1s infinite;
+.timeline-dot {
+  @apply absolute left-[-4px] w-3 h-3 rounded-full bg-blue-500;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+}
+
+.timeline-dot::after {
+  content: '';
+  @apply absolute inset-0 rounded-full;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+  animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
   0% {
     transform: scale(1);
+    opacity: 1;
   }
   50% {
-    transform: scale(1.05);
+    transform: scale(1.5);
+    opacity: 0;
   }
   100% {
     transform: scale(1);
-  }
-}
-
-/* Pour la timeline d'expérience */
-.timeline-item {
-  transition: all 0.3s ease;
-}
-
-.timeline-item:hover {
-  transform: scale(1.02);
-}
-
-/* Ajouter dans src/app/globals.css */
-
-@keyframes fadeIn {
-  from {
     opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 
-.animate-fade-in {
-  opacity: 0;
-  animation: fadeIn 0.5s ease forwards;
+/* Skill Badges */
+.skill-badge {
+  @apply px-3 py-1 rounded-full text-sm font-medium transition-all duration-300;
 }
 
-.timeline-item {
-  transition: all 0.3s ease;
+.skill-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.timeline-item:hover {
-  transform: scale(1.02);
+/* Header Gradient */
+.header-gradient {
+  background: linear-gradient(135deg, #1a365d 0%, #2563eb 100%);
 }
 
-/* Animation du point de la timeline */
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -5px;
-  top: 0;
-  width: 12px;
-  height: 12px;
-  background: theme('colors.blue.500');
-  border-radius: 50%;
-  transition: all 0.3s ease;
+/* Section Headers */
+.section-header {
+  @apply text-2xl font-bold mb-6;
+  background: linear-gradient(to right, #3b82f6, #60a5fa);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
-.timeline-item:hover::before {
-  transform: scale(1.2);
-  box-shadow: 0 0 10px theme('colors.blue.500');
+/* Modern Button Styles */
+.modern-button {
+  @apply px-6 py-2 rounded-full transition-all duration-300;
+  background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+}
+
+.modern-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px -1px rgba(59, 130, 246, 0.3);
+}
+
+/* Dark Mode Styles */
+.dark {
+  @apply bg-gray-900 text-white;
+}
+
+.dark .glass-card {
+  background: rgba(17, 24, 39, 0.7);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass-card:hover {
+  background: rgba(17, 24, 39, 0.8);
+  border-color: rgba(255, 255, 255, 0.2);
 }

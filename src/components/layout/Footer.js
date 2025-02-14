@@ -1,86 +1,58 @@
-// components/layout/Footer.js
-import { Github, Linkedin, Mail, Phone } from 'lucide-react';
+'use client';
+
+import { Github, Linkedin, Mail } from 'lucide-react';
+
+const SocialLink = ({ href, icon: Icon, label }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gray-400 hover:text-blue-500 transition-colors duration-300"
+    aria-label={label}
+  >
+    <Icon className="w-5 h-5" />
+  </a>
+);
 
 const Footer = ({ darkMode }) => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className={`${
-      darkMode ? 'bg-gray-900 text-gray-300' : 'bg-gray-100 text-gray-600'
-    } py-8 mt-16`}>
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Contact */}
-          <div>
-            <h3 className={`text-lg font-semibold mb-4 ${
-              darkMode ? 'text-white' : 'text-gray-800'
-            }`}>
-              Contact
-            </h3>
-            <div className="space-y-2">
-              <a 
-                href="mailto:hugo.cannier@efrei.net" 
-                className="flex items-center gap-2 hover:text-blue-500 transition-colors"
-              >
-                <Mail className="w-4 h-4" />
-                hugo.cannier@efrei.net
-              </a>
-              <a 
-                href="tel:+33778664351" 
-                className="flex items-center gap-2 hover:text-blue-500 transition-colors"
-              >
-                <Phone className="w-4 h-4" />
-                +33 7 78 66 43 51
-              </a>
-            </div>
+    <footer className={`
+      mt-16 py-8 border-t
+      ${darkMode 
+        ? 'bg-gray-900 border-gray-800 text-gray-400' 
+        : 'bg-white border-gray-200 text-gray-600'
+      }
+    `}>
+      <div className="max-w-4xl mx-auto px-4">
+        <div className="flex flex-col items-center gap-4">
+          {/* Social Links */}
+          <div className="flex items-center gap-6">
+            <SocialLink
+              href="https://github.com/votre-github"
+              icon={Github}
+              label="GitHub"
+            />
+            <SocialLink
+              href="https://linkedin.com/in/votre-linkedin"
+              icon={Linkedin}
+              label="LinkedIn"
+            />
+            <SocialLink
+              href="mailto:hugo.cannier@efrei.net"
+              icon={Mail}
+              label="Email"
+            />
           </div>
 
-          {/* Réseaux sociaux */}
-          <div>
-            <h3 className={`text-lg font-semibold mb-4 ${
-              darkMode ? 'text-white' : 'text-gray-800'
-            }`}>
-              Réseaux sociaux
-            </h3>
-            <div className="space-y-2">
-              <a 
-                href="https://github.com/hugocs6" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-blue-500 transition-colors"
-              >
-                <Github className="w-4 h-4" />
-                GitHub
-              </a>
-              <a 
-                href="https://www.linkedin.com/in/hugo-cannier-8721562b8/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-blue-500 transition-colors"
-              >
-                <Linkedin className="w-4 h-4" />
-                LinkedIn
-              </a>
-            </div>
+          {/* Copyright */}
+          <div className="text-sm text-center">
+            <p>© {currentYear} Hugo Cannier. Tous droits réservés.</p>
+            <p className="mt-1">
+              Étudiant en Cybersécurité à l&apos;EFREI Paris
+            </p>
           </div>
-
-          {/* Disponibilité */}
-          <div>
-            <h3 className={`text-lg font-semibold mb-4 ${
-              darkMode ? 'text-white' : 'text-gray-800'
-            }`}>
-              Disponibilité
-            </h3>
-            <p className="mb-2">Recherche de stage/alternance en cybersécurité</p>
-            <p>Région parisienne</p>
-          </div>
-        </div>
-
-        {/* Copyright */}
-        <div className={`text-center mt-8 pt-8 border-t ${
-          darkMode ? 'border-gray-800' : 'border-gray-200'
-        }`}>
-          <p className="text-sm">
-            © {new Date().getFullYear()} Hugo Cannier. Tous droits réservés.
-          </p>
         </div>
       </div>
     </footer>
