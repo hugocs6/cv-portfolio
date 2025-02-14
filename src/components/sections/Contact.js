@@ -46,7 +46,7 @@ const Contact = ({ isVisible, darkMode }) => {
     try {
       const result = await emailjs.sendForm(
         'service_c6i6btc',
-        'template_contact',
+        'template_eli4yv7',
         form.current,
         'H2gEFKizZWANhbuWQ'
       );
