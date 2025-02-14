@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Mail, Send, Phone, MapPin } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
@@ -32,6 +32,11 @@ const Contact = ({ isVisible, darkMode }) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+
+  useEffect(() => {
+    // Initialize EmailJS with your public key
+    emailjs.init('H2gEFKizZWANhbuWQ');
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
