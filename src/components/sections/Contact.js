@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Mail, Send, Phone, MapPin } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const ContactInfo = ({ icon: Icon, label, value, href, darkMode }) => (
   <a
@@ -22,9 +23,10 @@ const ContactInfo = ({ icon: Icon, label, value, href, darkMode }) => (
 );
 
 const Contact = ({ isVisible, darkMode }) => {
+  const form = useRef();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
+    from_name: '',
+    from_email: '',
     subject: '',
     message: ''
   });
@@ -34,19 +36,29 @@ const Contact = ({ isVisible, darkMode }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Here you would typically send the data to your backend
-    console.log('Form submitted:', formData);
-    
-    setSubmitStatus('success');
-    setIsSubmitting(false);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    
-    // Reset status after 3 seconds
-    setTimeout(() => setSubmitStatus(null), 3000);
+    setSubmitStatus(null);
+
+    try {
+      const result = await emailjs.sendForm(
+        'service_c6i6btc',
+        'template_contact',
+        form.current,
+        'H2gEFKizZWANhbuWQ'
+      );
+
+      if (result.text === 'OK') {
+        setSubmitStatus('success');
+        setFormData({ from_name: '', from_email: '', subject: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus(null), 3000);
+    }
   };
 
   const handleChange = (e) => {
@@ -93,20 +105,20 @@ const Contact = ({ isVisible, darkMode }) => {
           Envoyez-moi un message
         </h3>
         
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form ref={form} onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label 
-                htmlFor="name" 
+                htmlFor="from_name" 
                 className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
               >
                 Nom
               </label>
               <input
                 type="text"
-                id="name"
-                name="name"
-                value={formData.name}
+                id="from_name"
+                name="from_name"
+                value={formData.from_name}
                 onChange={handleChange}
                 required
                 className={`
@@ -120,16 +132,16 @@ const Contact = ({ isVisible, darkMode }) => {
             </div>
             <div>
               <label 
-                htmlFor="email" 
+                htmlFor="from_email" 
                 className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
               >
                 Email
               </label>
               <input
                 type="email"
-                id="email"
-                name="email"
-                value={formData.email}
+                id="from_email"
+                name="from_email"
+                value={formData.from_email}
                 onChange={handleChange}
                 required
                 className={`
@@ -211,6 +223,12 @@ const Contact = ({ isVisible, darkMode }) => {
           {submitStatus === 'success' && (
             <p className="text-green-500 text-sm mt-2">
               Message envoyé avec succès !
+            </p>
+          )}
+
+          {submitStatus === 'error' && (
+            <p className="text-red-500 text-sm mt-2">
+              Une erreur est survenue. Veuillez réessayer.
             </p>
           )}
         </form>
